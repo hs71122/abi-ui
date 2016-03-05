@@ -22,10 +22,10 @@ public class Test {
 		@Label(_for="me1")
 		String firstName = "";
 		@Label(_for="me2")
+		@GlobalAttribute(hidden = true)
 		String lastName = "";
 		@Button(classes = "", text = "submit", properties = {})
 		String submit = "Submit";
-
 		public String getFirstName() {
 			return firstName;
 		}
