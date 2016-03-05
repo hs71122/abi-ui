@@ -6,8 +6,20 @@ package org.freethemalloc.ui.annotation.html.attribute;
  */
 public @interface GlobalAttribute {
 
+    /**
+     * The accesskey attribute specifies a shortcut key to activate/focus an element.
+     */
     String accesskey() default "";
+
+    /**
+     * The class attribute specifies one or more classnames for an element.
+     *The class attribute is mostly used to point to a class in a style sheet. However, it can also be used by a JavaScript (via the HTML DOM) to make changes to HTML elements with a specified class.
+     */
     String classs() default "";
+
+    /**
+     * The contenteditable attribute specifies whether the content of an element is editable or not
+     */
     boolean contenteditable() default true;
 
     /**
