@@ -1,10 +1,11 @@
 package org.freethemalloc.ui.uimodel;
 
-import org.freethemalloc.ui.stereotype.Button;
-import org.freethemalloc.ui.stereotype.Container;
-import org.freethemalloc.ui.stereotype.Label;
-import org.freethemalloc.ui.stereotype.Page;
-import org.freethemalloc.ui.stereotype.Page.FrameworkType;
+import org.freethemalloc.ui.annotation.html.attribute.GlobalAttribute;
+import org.freethemalloc.ui.annotation.html.element.Button;
+import org.freethemalloc.ui.annotation.html.element.Container;
+import org.freethemalloc.ui.annotation.html.element.Label;
+import org.freethemalloc.ui.annotation.html.element.Page;
+import org.freethemalloc.ui.annotation.html.element.Page.FrameworkType;
 
 @Page(	title = "Test", 
 		framework = FrameworkType.BOOTSTRAP, 
@@ -24,5 +25,29 @@ public class Test {
 		String lastName = "";
 		@Button(classes = "", text = "submit", properties = {})
 		String submit = "Submit";
+
+		public String getFirstName() {
+			return firstName;
+		}
+
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
+
+		public String getLastName() {
+			return lastName;
+		}
+
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
+		}
+
+		public String getSubmit() {
+			return submit;
+		}
+
+		public void setSubmit(String submit) {
+			this.submit = submit;
+		}
 	}
 }

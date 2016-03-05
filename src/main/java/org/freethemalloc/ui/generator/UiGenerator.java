@@ -2,11 +2,10 @@ package org.freethemalloc.ui.generator;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 import org.freethemalloc.ui.component.*;
-import org.freethemalloc.ui.stereotype.Container;
-import org.freethemalloc.ui.stereotype.Page;
+import org.freethemalloc.ui.annotation.html.element.Container;
+import org.freethemalloc.ui.annotation.html.element.Page;
 
 
 public class UiGenerator extends UiFramework{
@@ -35,7 +34,7 @@ public class UiGenerator extends UiFramework{
 	}
 	
 	/**
-	 * 
+	 *
 	 * @param classType
 	 */
 	private String buildBootstrap(Class<? extends Object> classType) {
@@ -50,7 +49,7 @@ public class UiGenerator extends UiFramework{
 		if(!bsCssMin.equals("") && !bsJsMin.equals("") && !jqMin.equals("")){
 			out("Bootsrap framework dependence found");
 			String header = buildHeader(bsCssMin,bsJsMin,jqMin);
-			String body;
+			StringBuilder body = new StringBuilder();
 			
 			Class[] classes = classType.getDeclaredClasses();
 			out("classes : "+classes.toString());
@@ -67,6 +66,12 @@ public class UiGenerator extends UiFramework{
 							Annotation[] fAnnotations = field.getDeclaredAnnotations();
 							for(Annotation fAnnotation : fAnnotations){
 								out(fAnnotation.annotationType().getName());
+								switch (fAnnotation.annotationType().getName()){
+									case "Label":
+
+										//body.append("<span class=\"label label-pill label-default\">"++"</span>");
+
+								}
 							}
 						}
 						
@@ -87,6 +92,10 @@ public class UiGenerator extends UiFramework{
 				"<script src=\""+jqMin+"\"></script>"+
 				"<script src=\""+bsJsMin+"\"></script>";
 	}
+
+	/*private String buildBody(String element){
+
+	}*/
 
 	public void out(String str){
 		System.out.println(str);

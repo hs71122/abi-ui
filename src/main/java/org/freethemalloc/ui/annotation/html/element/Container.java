@@ -1,4 +1,4 @@
-package org.freethemalloc.ui.stereotype;
+package org.freethemalloc.ui.annotation.html.element;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
