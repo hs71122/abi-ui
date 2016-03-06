@@ -1,4 +1,4 @@
-package org.freethemalloc.ui.annotation.html.element;
+package org.freethemalloc.ui.annotation.html.element.head;
 
 import org.freethemalloc.ui.annotation.html.attribute.GlobalAttribute;
 
@@ -11,22 +11,8 @@ import org.freethemalloc.ui.annotation.html.attribute.GlobalAttribute;
 public @interface Head {
 
     /**
-     * The Title annotation define the title of the HTML page <br />
-     * There are two properties :
-     * <ul>
-     *     <li>{@link GlobalAttribute} attribute</li>
-     *     <li>{@link String} value</li>
-     * </ul>
-     * @see GlobalAttribute
-     */
-    @interface Title{
-        GlobalAttribute attribute() default @GlobalAttribute();
-        String value() default "";
-    }
-
-    /**
-     * The <title> tag is required in all HTML documents and it defines the title of the document.
-     *The <title> element:
+     * The &lt title &gt tag is required in all HTML documents and it defines the title of the document.
+     *The &lt title &gt element:
      * <ul>
      *<li>defines a title in the browser toolbar</li>
      *<li>provides a title for the page when it is added to favorites</li>
@@ -35,9 +21,16 @@ public @interface Head {
      * @see Title
      */
     Title title() default @Title();
-    String style() default "";
-    String meta() default "";
-    String link() default "";
-    String script() default "";
-    String base() default "";
+
+    /**
+     * The &lt style &gt tag is used to define style information for an HTML document.<br />
+     *Inside the &lt style &gt element you specify how HTML elements should render in a browser.<br />
+     *Each HTML document can contain multiple &lt style &gt tags.
+     */
+    Style style() default @Style();
+
+    Meta meta() default @Meta();
+    Link link() default @Link();
+    Script script() default @Script();
+    Base base() default @Base();
 }
