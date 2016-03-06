@@ -122,12 +122,57 @@ public @interface GlobalAttribute {
 
     /**
      * The hidden attribute is a boolean attribute.<br />
-     *When present, it specifies that an element is not yet, or is no longer, relevant.<br />
-     *Browsers should not display elements that have the hidden attribute specified.<br />
-     *The hidden attribute can also be used to keep a user from seeing an element until some other condition has been met (like selecting a checkbox, etc.).
+     * When present, it specifies that an element is not yet, or is no longer, relevant.<br />
+     * Browsers should not display elements that have the hidden attribute specified.<br />
+     * The hidden attribute can also be used to keep a user from seeing an element until some other condition has been met (like selecting a checkbox, etc.).
      * Then, a JavaScript could remove the hidden attribute, and make the element visible.<br />
-     *
+     * <p/>
      * default value : false;
      */
     boolean hidden() default false;
+
+    /**
+     * The id attribute specifies a unique id for an HTML element (the value must be unique within the HTML document).
+     * The id attribute is most used to point to a style in a style sheet, and by JavaScript (via the HTML DOM) to manipulate the element with the specific id.
+     */
+    String id() default "";
+
+    /**
+     * The lang attribute specifies the language of the element's content.
+     * Common examples are "en" for English, "es" for Spanish, "fr" for France and so on.
+     */
+    String lang() default "";
+
+    /**
+     * The spellcheck attribute specifies whether the element is to have its spelling and grammar checked or not.
+     * The following can be spellchecked:
+     * <ul>
+     * <li>Text values in input elements (not password)</li>
+     * <li>Text in &lt;textarea&gt; elements</li>
+     * <li>Text in editable elements</li>
+     * </ul>
+     */
+    String spellCheck() default "";
+
+    /**
+     * The style attribute specifies an inline style for an element.
+     * The style attribute will override any style set globally, e.g. styles specified in the <style> tag or in an external style sheet.
+     */
+    String style() default "";
+
+    /**
+     * The tabindex attribute specifies the tab order of an element (when the "tab" button is used for navigating).
+     */
+    String tabindex() default "";
+
+    /**
+     * The title attribute specifies extra information about an element.
+     * The information is most often shown as a tooltip text when the mouse moves over the element.
+     */
+    String title() default "";
+
+    /**
+     * The translate attribute specifies whether the content of an element should be translated or not
+     */
+    String translate() default "";
 }
