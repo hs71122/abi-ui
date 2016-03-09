@@ -1,0 +1,15 @@
+package org.freethemalloc.ui.handler;
+
+import org.freethemalloc.ui.annotation.html.element.head.Head;
+
+import java.lang.annotation.Annotation;
+
+/**
+ * Created by Harshana Samaranayake on 3/9/2016.
+ */
+public class TitleHandler implements Handler {
+    @Override
+    public String processTag(Annotation tag) {
+        return null;
+    }
+}
