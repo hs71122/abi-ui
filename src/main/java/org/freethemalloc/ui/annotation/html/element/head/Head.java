@@ -1,7 +1,5 @@
 package org.freethemalloc.ui.annotation.html.element.head;
 
-import org.freethemalloc.ui.annotation.html.attribute.GlobalAttribute;
-
 /**
  *The &lt head &gt element is a container for metadata (data about data).<br />
  *HTML metadata is data about the HTML document. Metadata is not displayed.<br />
@@ -27,10 +25,10 @@ public @interface Head {
      *Inside the &lt style &gt element you specify how HTML elements should render in a browser.<br />
      *Each HTML document can contain multiple &lt style &gt tags.
      */
-    Style style() default @Style();
+    Style[] style() default @Style();
 
-    Meta meta() default @Meta();
-    Link link() default @Link();
-    Script script() default @Script();
+    Meta[] meta() default @Meta();
+    Link[] link() default @Link();
+    Script[] script() default @Script();
     Base base() default @Base();
 }
