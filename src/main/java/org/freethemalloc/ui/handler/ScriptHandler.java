@@ -1,5 +1,7 @@
 package org.freethemalloc.ui.handler;
 
+import org.freethemalloc.ui.annotation.html.element.head.Script;
+
 import java.lang.annotation.Annotation;
 
 /**
@@ -8,6 +10,8 @@ import java.lang.annotation.Annotation;
 public class ScriptHandler implements Handler {
     @Override
     public String processTag(Annotation tag) {
-        return null;
+
+        Script script = (Script)tag;
+        return "<script src=\""+script.src()+"\" ></script>";
     }
 }

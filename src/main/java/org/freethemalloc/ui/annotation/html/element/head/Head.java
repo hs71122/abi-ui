@@ -1,11 +1,18 @@
 package org.freethemalloc.ui.annotation.html.element.head;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 /**
  *The &lt head &gt element is a container for metadata (data about data).<br />
  *HTML metadata is data about the HTML document. Metadata is not displayed.<br />
  *Metadata typically define document title, styles, links, scripts, and other meta information.<br />
  *The following tags describe metadata: &lt title &gt, &lt style &gt, &lt meta &gt, &lt link &gt, &lt script &gt, and &lt base &gt.
  */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
 public @interface Head {
 
     /**

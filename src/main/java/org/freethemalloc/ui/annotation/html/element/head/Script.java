@@ -2,11 +2,18 @@ package org.freethemalloc.ui.annotation.html.element.head;
 
 import org.freethemalloc.ui.annotation.html.attribute.GlobalAttribute;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 /**
  * The &lt script &gt tag is used to define a client-side script (JavaScript).
  * The &lt script &gt element either contains scripting statements, or it points to an external script file through the src attribute.
  * Common uses for JavaScript are image manipulation, form validation, and dynamic changes of content.
  */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.ANNOTATION_TYPE)
 public @interface Script {
 
     GlobalAttribute attribute() default @GlobalAttribute();

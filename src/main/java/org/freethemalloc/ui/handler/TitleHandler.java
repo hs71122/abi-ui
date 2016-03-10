@@ -1,6 +1,8 @@
 package org.freethemalloc.ui.handler;
 
 import org.freethemalloc.ui.annotation.html.element.head.Head;
+import org.freethemalloc.ui.annotation.html.element.head.Link;
+import org.freethemalloc.ui.annotation.html.element.head.Title;
 
 import java.lang.annotation.Annotation;
 
@@ -10,6 +12,9 @@ import java.lang.annotation.Annotation;
 public class TitleHandler implements Handler {
     @Override
     public String processTag(Annotation tag) {
-        return null;
+
+        Title title = (Title)tag;
+
+        return "<title>"+title.value()+"</title>";
     }
 }

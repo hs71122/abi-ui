@@ -1,5 +1,7 @@
 package org.freethemalloc.ui.handler;
 
+import org.freethemalloc.ui.annotation.html.element.head.Link;
+
 import java.lang.annotation.Annotation;
 
 /**
@@ -8,6 +10,9 @@ import java.lang.annotation.Annotation;
 public class LinkHandler implements Handler {
     @Override
     public String processTag(Annotation tag) {
-        return null;
+
+        Link link = (Link)tag;
+
+        return "<link href=\""+link.href()+"\" rel=\""+link.rel()+"\" />";
     }
 }

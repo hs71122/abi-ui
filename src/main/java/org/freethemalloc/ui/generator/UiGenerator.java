@@ -1,104 +1,45 @@
 package org.freethemalloc.ui.generator;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
 
-import org.freethemalloc.ui.component.*;
-import org.freethemalloc.ui.annotation.html.element.Container;
-import org.freethemalloc.ui.annotation.html.element.Page;
+import org.freethemalloc.ui.handler.HeadHandler;
+import sun.plugin.dom.html.HTMLDivElement;
 
 
-public class UiGenerator extends UiFramework{
+public class UiGenerator {
 
-	public <T> String build(T generatorType) {
-		
-		Class<? extends Object> classType = generatorType.getClass();
-		
-		if(classType.isAnnotationPresent(Page.class)){
-			System.out.println("present..");
-			Page page = classType.getAnnotation(Page.class);
-			if(page.framework() == Page.FrameworkType.BOOTSTRAP){
-				out("Bootsrap");
-				buildBootstrap(classType);
-			}else if(page.framework() == Page.FrameworkType.ANGULAR){
-				out("Anugular");
-			}else{
-				out("not define");
-			}
-			
-		}else{
-			System.out.println("not present");
-		}
-		System.out.println("Done");
-		return this.getUiTemplate("", "Test", "<h1>Hello Generator</h>");
-	}
-	
-	/**
-	 *
-	 * @param classType
-	 */
-	private String buildBootstrap(Class<? extends Object> classType) {
-		Bootstrap bootstrap;
-		Page page = classType.getDeclaredAnnotation(Page.class);
-		Page.Bootstrap bs = page.bootstrap();
-		String title = page.title();
-		String bsCssMin = bs.bsCssMin();
-		String bsJsMin = bs.bsJsMin();
-		String jqMin = bs.jqMin();
-		
-		if(!bsCssMin.equals("") && !bsJsMin.equals("") && !jqMin.equals("")){
-			out("Bootsrap framework dependence found");
-			String header = buildHeader(bsCssMin,bsJsMin,jqMin);
-			StringBuilder body = new StringBuilder();
-			
-			Class[] classes = classType.getDeclaredClasses();
-			out("classes : "+classes.toString());
-			for(Class _class : classes){
-				out("inner class : "+_class.toString());
-				Annotation[] annotations = _class.getDeclaredAnnotations();
-				for(Annotation annotation : annotations){
-					out("inner class annotation : "+annotation.toString());
-					if(annotation.annotationType().equals(Container.class)){
-						BootstrapContainer container = new BootstrapContainer();
-						Field[] fields = _class.getDeclaredFields();
-						out("Field count : "+fields.length);
-						for(Field field : fields){
-							Annotation[] fAnnotations = field.getDeclaredAnnotations();
-							for(Annotation fAnnotation : fAnnotations){
-								out(fAnnotation.annotationType().getName());
-								switch (fAnnotation.annotationType().getName()){
-									case "Label":
+    public <T> String build(T generatorType) {
+        out("Called Build");
+        out("Class Name : " + generatorType.getClass().getName());
 
-										//body.append("<span class=\"label label-pill label-default\">"++"</span>");
+        StringBuilder htmlBuilder = new StringBuilder();
+        htmlBuilder.append("<html>");
 
-								}
-							}
-						}
-						
-					}
-				}
-			}
-			out("end");
-		}else{
-			out("Bootsrap framework dependence not found");
-		}
-		return null;
-		
-		//bootstrap = new Bootstrap(bsCssMin, bsJsMin, jqMin);
-	}
-	private String buildHeader(String bsCssMin, String bsJsMin, String jqMin) {
-		
-		return "<link rel=\"stylesheet\" href=\""+bsCssMin+"\">"+
-				"<script src=\""+jqMin+"\"></script>"+
-				"<script src=\""+bsJsMin+"\"></script>";
-	}
 
-	/*private String buildBody(String element){
+        Annotation[] annotations = generatorType.getClass().getDeclaredAnnotations();
 
-	}*/
+        for (Annotation annotation : annotations) {
+            out("Annotation Type" + annotation.annotationType().toString());
+            if (annotation.annotationType().getSimpleName().equals("Head")) {
+                HeadHandler handler = new HeadHandler();
+                htmlBuilder.append(handler.processTag(annotation));
 
-	public void out(String str){
-		System.out.println(str);
-	}
+            }
+        }
+        String body = "<body>" +
+                "<div class=\"container\">" +
+                "  <div class=\"jumbotron\">" +
+                "    <h1>My First Bootstrap Page</h1>" +
+                "    <p>Resize this responsive page to see the effect!</p>" +
+                "  </div></div>" +
+                "</body>";
+        htmlBuilder.append(body);
+        htmlBuilder.append("</html>");
+        return htmlBuilder.toString();
+    }
+
+    public void out(String str) {
+        System.out.println(str);
+    }
 
 }

@@ -2,6 +2,11 @@ package org.freethemalloc.ui.annotation.html.element.head;
 
 import org.freethemalloc.ui.annotation.html.attribute.GlobalAttribute;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 /**
  * Metadata is data (information) about data.
  *The <meta> tag provides metadata about the HTML document. Metadata will not be displayed on the page, but will be machine parsable.<br />
@@ -11,6 +16,8 @@ import org.freethemalloc.ui.annotation.html.attribute.GlobalAttribute;
  * Metadata is always passed as name/value pairs.<br />
  * The content attribute MUST be defined if the name or the http-equiv attribute is defined. If none of these are defined, the content attribute CANNOT be defined
  */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.ANNOTATION_TYPE)
 public @interface Meta {
 
     GlobalAttribute attribute() default @GlobalAttribute();
