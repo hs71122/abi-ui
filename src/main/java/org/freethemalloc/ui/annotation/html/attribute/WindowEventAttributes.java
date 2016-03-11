@@ -42,7 +42,7 @@ public @interface WindowEventAttributes {
 
     /**
      * The onload attribute fires when an object has been loaded.<br />
-     * onload is most often used within the <body> element to execute a script once a web page has completely loaded all content (including images, script files, CSS files, etc.). However, it can be used on other elements as well (see "Supported HTML tags" below).
+     * onload is most often used within the &lt body &gt element to execute a script once a web page has completely loaded all content (including images, script files, CSS files, etc.). However, it can be used on other elements as well (see "Supported HTML tags" below).
      */
     String onLoad() default "";
 

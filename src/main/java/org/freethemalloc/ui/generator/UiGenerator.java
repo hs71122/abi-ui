@@ -3,7 +3,6 @@ package org.freethemalloc.ui.generator;
 import java.lang.annotation.Annotation;
 
 import org.freethemalloc.ui.handler.HeadHandler;
-import sun.plugin.dom.html.HTMLDivElement;
 
 
 public class UiGenerator {
@@ -23,7 +22,6 @@ public class UiGenerator {
             if (annotation.annotationType().getSimpleName().equals("Head")) {
                 HeadHandler handler = new HeadHandler();
                 htmlBuilder.append(handler.processTag(annotation));
-
             }
         }
         String body = "<body>" +
